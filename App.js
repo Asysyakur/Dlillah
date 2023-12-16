@@ -78,8 +78,9 @@ function App() {
               iconName = focused ? 'person' : 'person-outline';
             }
 
+            const iconColor = focused ? 'red' : 'gray';
             // You can return any component here as the tab icon
-            return <Ionicons name={iconName} size={size} color={color} />;
+            return <Ionicons name={iconName} size={size} color='#04B4A2' />;
           },
           tabBarLabel: () => null, // Hide the label
         })}

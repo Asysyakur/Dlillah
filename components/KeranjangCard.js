@@ -78,7 +78,7 @@ export default KeranCard;
       marginBottom: 20,
     },
     pesanButton: {
-      backgroundColor: '#528BF9',
+      backgroundColor: '#04B4A2',
       borderRadius: 10,
       margin: 16,
       padding: 10,
