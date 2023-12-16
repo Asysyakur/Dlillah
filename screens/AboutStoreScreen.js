@@ -40,7 +40,7 @@ function AboutStoreScreen() {
     <ScrollView style={styles.container}>
       {/* Logo Toko */}
       <Image
-        source={require('../assets/BeKi.png')} // Ganti dengan path yang sesuai
+        source={require('../assets/Dlillah-Logo.png')} // Ganti dengan path yang sesuai
         style={styles.logo}
       />
 
@@ -48,7 +48,7 @@ function AboutStoreScreen() {
       <TouchableOpacity onPress={() => toggleSection('description')}>
         <View style={styles.section}>
           <View style={styles.sectionHeader}>
-            <Text style={styles.sectionTitle}>Belanja Kilat</Text>
+            <Text style={styles.sectionTitle}>D'Lillah</Text>
             <View style={styles.showMore}>
               {renderArrowIcon('description')}
             </View>
@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
   },
   logo: {
     width: '100%',
-    height: 200,
+    height: 90,
     resizeMode: 'cover',
     borderRadius: 10,
     marginBottom: 20,

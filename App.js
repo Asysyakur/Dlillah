@@ -24,8 +24,8 @@ const Stack = createNativeStackNavigator();
 function StatusPembayaranStack(){
   return(
 <Stack.Navigator>
-  <Stack.Screen name="Status Pembayaran" component={StatusPembayaran}/>
-  <Stack.Screen name="Status Pembayaran Selesai" component={StatusPembayaranSelesai}/>
+  <Stack.Screen name="Status Pembayaran" component={StatusPembayaran} options={{ headerShown: false }}/>
+  <Stack.Screen name="Status Pembayaran Selesai" component={StatusPembayaranSelesai} options={{ headerShown: false }}/>
 </Stack.Navigator>
   );
 }
@@ -34,7 +34,7 @@ function RiwayatStack() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Profil" component={ProfilScreen} />
-      <Stack.Screen name="Riwayat Transaksi" component={RiwayatPesan} />
+      <Stack.Screen name="Riwayat Transaksi" component={RiwayatPesan}/>
       <Stack.Screen name="Status Pembayaran" component={StatusPembayaranStack} />
       <Stack.Screen name="Tentang Toko" component={AboutStoreScreen} />
       <Stack.Screen name="Edit Profile" component={EditProfileScreen} />
@@ -45,7 +45,7 @@ function RiwayatStack() {
 function MenuStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Menu" component={Homescreen} />
+      <Stack.Screen name="Menu" component={Homescreen} options={{ headerShown: false }}/>
       <Stack.Screen name="Product Detail" component={ProductDetail} />
       <Stack.Screen name="Pesan Sekarang" component={PesanSekarang} />
       <Stack.Screen name="FAQ" component={FAQList} />
