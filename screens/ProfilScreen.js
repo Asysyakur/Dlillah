@@ -31,7 +31,7 @@ function ProfileScreen({ navigation }) {
       {/* Card Button untuk Pindah Halaman */}
       <TouchableOpacity
         style={styles.cardButton}
-        onPress={() => navigation.navigate("OtherPage")}
+        onPress={() => navigation.navigate("Edit Profil")}
       >
         <Text style={styles.buttonText}>Edit Profil</Text>
         <svg
@@ -116,7 +116,7 @@ function ProfileScreen({ navigation }) {
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.logoutButton}
-        onPress={() => navigation.navigate("OtherPage")}
+        onPress={() => navigation.navigate("Edit Profil")}
       >
         <Text style={styles.logoutText}>Logout</Text>
       </TouchableOpacity>

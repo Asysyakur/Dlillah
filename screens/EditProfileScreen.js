@@ -14,28 +14,6 @@ function EditProfileScreen({ navigation }) {
     // Implement logic to save changes to the user profile
   };
 
-  React.useLayoutEffect(() => {
-    navigation.setOptions({
-      headerLeft: () => (
-        <TouchableOpacity
-          style={styles.backButton}
-          onPress={() => navigation.goBack()}
-        >
-          <Icon name="angle-left" size={24} color="black" />
-        </TouchableOpacity>
-      ),
-      headerRight: () => (
-        <TouchableOpacity
-          style={styles.homeButton}
-          onPress={() => navigation.navigate('Home')}
-        >
-          <Text style={styles.homeButtonText}>Home</Text>
-        </TouchableOpacity>
-      ),
-      header: () => <HeaderPage title="Edit Profil" />,
-    });
-  }, [navigation]);
-
   return (
     <View style={styles.container}>
       <View style={styles.editProfileContainer}>
