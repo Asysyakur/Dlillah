@@ -54,7 +54,7 @@ function AboutStoreScreen() {
     <ScrollView style={styles.container}>
       {/* Logo Toko */}
       <Image
-        source={require('../assets/Dlillah-Logo.png')} // Ganti dengan path yang sesuai
+        source={require('../assets/Logo Dlillah.png')} // Ganti dengan path yang sesuai
         style={styles.logo}
       />
 
