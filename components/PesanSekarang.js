@@ -1,21 +1,28 @@
 // PesanSekarang.js
 import React, { useState } from 'react';
 import { View, Text, Image, TextInput, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const PesanSekarang = ({ route }) => {
   const { item, quantity } = route.params;
   const [recipientAddress, setRecipientAddress] = useState('');
   const [paymentProof, setPaymentProof] = useState('');
+  const [notes, setNotes] = useState('');
+  const [orderDate, setOrderDate] = useState('');
 
   const totalPayment = item.price * quantity;
 
   const handleBayar = () => {
-    // Implement logic to process the payment
     console.log(`Paid for ${quantity} ${item.name} - Total: ${totalPayment}`);
   };
-console.log(item.price);
+
+  const handleDateChange = (date) => {
+    setOrderDate(date);
+  };
+
   return (
-    <ScrollView style={{ flex: 1 }}>
+    <ScrollView style={{ flex: 1, backgroundColor: 'white' }}>
       <View style={styles.container}>
         <Image
           source={item.image}
@@ -45,8 +52,29 @@ console.log(item.price);
           onChangeText={(text) => setPaymentProof(text)}
         />
 
+        <Text style={styles.label}>Catatan</Text>
+        <TextInput
+          style={[styles.input, { height: 100 }]}
+          placeholder="Catatan"
+          multiline
+          value={notes}
+          onChangeText={(text) => setNotes(text)}
+        />
+
+        <DatePicker
+          selected={orderDate}
+          onChange={handleDateChange}
+          placeholderText="Pilih Tanggal Pemesanan"
+          dateFormat="yyyy-MM-dd"
+          todayButton="Hari Ini"
+        />
+
+        {orderDate && (
+          <Text style={styles.selectedDateText}>Tanggal Pemesanan: {orderDate.toISOString().split('T')[0]}</Text>
+        )}
+
         <TouchableOpacity style={styles.bayarButton} onPress={handleBayar}>
-          <Text style={styles.bayarButtonText}>Bayar: {totalPayment}</Text>
+          <Text style={styles.bayarButtonText}>Booking: {totalPayment}</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>
@@ -88,7 +116,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   bayarButton: {
-    backgroundColor: '#528BF9',
+    backgroundColor: '#04B4A2',
     paddingVertical: 15,
     borderRadius: 10,
     alignItems: 'center',
@@ -99,6 +127,11 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 18,
     fontWeight: '500',
+  },
+  selectedDateText: {
+    fontFamily: 'Poppins-Regular',
+    fontSize: 16,
+    marginTop: 10,
   },
 });
 

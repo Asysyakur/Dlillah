@@ -17,54 +17,85 @@ const ProductDetail = ({ route, navigation }) => {
   };
 
   const handleAddToCart = () => {
-    // Implement logic to add the product to the cart
-    // You can use a state management solution or send the data to an API, for example.
     console.log(`Added ${quantity} ${item.name} to the cart`);
   };
 
   const handleOrderNow = () => {
-    // Implement logic to process the order
     console.log(`Ordered ${quantity} ${item.name} now`);
   };
 
   return (
-    <ScrollView style={{ flex: 1 }}>
-      <View style={{ padding: 16 }}>
-        <Image
-          source={item.image}
+    <ScrollView style={{ flex: 1, backgroundColor: 'white' }}>
+      <View>
+        <View
           style={{
-            width: '100%',
-            height: 300,
-            resizeMode: 'cover',
+            borderRadius: 16,
+            shadowColor: '#000',
+            shadowOffset: { width: 0, height: 4 },
+            shadowOpacity: 0.1,
+            shadowRadius: 7,
+            overflow: 'hidden',
           }}
-        />
-        <Text style={{ fontFamily: 'Poppins-Regular', fontSize: 24, fontWeight: 'bold', marginVertical: 10 }}>
-          {item.name}
-        </Text>
-        <Text style={{ fontFamily: 'Poppins-Regular', fontSize: 18, marginBottom: 10 }}>{item.price}</Text>
+        >
+          <Image
+            source={item.image}
+            style={{
+              width: '100%',
+              height: 200,
+              resizeMode: 'cover',
+              borderTopLeftRadius: 16,
+              borderTopRightRadius: 16,
+            }}
+          />
+          <Text style={{ fontFamily: 'Poppins-Regular', fontSize: 24, fontWeight: 'bold', margin: 16 }}>
+            {item.name}
+          </Text>
+          <Text style={{ fontFamily: 'Poppins-Regular', fontSize: 18, marginBottom: 16, marginLeft: 16 }}>{item.price}</Text>
 
-        <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 20 }}>
-          <TouchableOpacity onPress={handleDecrement} style={{ padding: 10, backgroundColor: 'lightgray', borderRadius: 5 }}>
-            <Text>-</Text>
-          </TouchableOpacity>
-          <Text style={{ fontFamily: 'Poppins-Regular', fontSize: 20, marginHorizontal: 10 }}>{quantity}</Text>
-          <TouchableOpacity onPress={handleIncrement} style={{ padding: 10, backgroundColor: 'lightgray', borderRadius: 5 }}>
-            <Text>+</Text>
-          </TouchableOpacity>
+          <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 20, marginLeft: 16 }}>
+            <TouchableOpacity onPress={handleDecrement} style={{ padding: 10, backgroundColor: '#04B4A2', borderRadius: 5 }}>
+              <Text style={{ fontSize: 18, fontWeight: '800', color:'white' }}>-</Text>
+            </TouchableOpacity>
+            <Text style={{ fontFamily: 'Poppins-Regular', fontSize: 20, marginHorizontal: 10 }}>{quantity}</Text>
+            <TouchableOpacity onPress={handleIncrement} style={{ padding: 10, backgroundColor: '#04B4A2', borderRadius: 5 }}>
+              <Text style={{ fontSize: 18, fontWeight: '800', color:'white' }}>+</Text>
+            </TouchableOpacity>
+          </View>
+
+          <Text style={{ fontFamily: 'Poppins-Regular', fontSize: 16, marginBottom: 16, marginLeft: 16, fontWeight: 'bold' }}>Tentang Produk</Text>
+          <Text style={{ fontFamily: 'Poppins-Regular', fontSize: 14, marginBottom: 20, marginLeft: 16, marginRight: 16, textAlign: 'justify' }}>{item.description}</Text>
         </View>
 
-        <Text style={{ fontFamily: 'Poppins-Regular', fontSize: 16, marginBottom: 10, fontWeight: 'bold' }}>Tentang Produk</Text>
-        <Text style={{ fontFamily: 'Poppins-Regular', fontSize: 14, marginBottom: 20, textAlign: 'justify'}}>{item.description}</Text>
-
-        <View style={{ flexDirection: 'row', justifyContent: 'center', backgroundColor: '#528BF9', paddingVertical: 8 }}>
-  <Button title="Keranjang" onPress={() => navigation.navigate("Keranjang")} />
-  <Button title="Pesan Sekarang" onPress={() => navigation.navigate("Pesan Sekarang", {item, quantity})} />
-</View>
-
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', }}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Keranjang")} 
+            style={{
+              flex: 1,
+              fontFamily: 'Poppins-Regular',
+              backgroundColor: 'white',
+              paddingVertical: 24,
+              borderColor: '#04B4A2',
+              borderWidth: 1,
+            }}
+          >
+            <Text style={{ color: '#04B4A2', textAlign: 'center', fontFamily: 'Poppins-Regular', fontSize: 16 }}>Tambah ke Keranjang</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Pesan Sekarang", {item, quantity})}
+            style={{
+              flex: 1,
+              fontFamily: 'Poppins-Regular',
+              backgroundColor: '#04B4A2',
+              borderBlockColor: 'white',
+              paddingVertical: 24,
+            }}
+          >
+            <Text style={{ color: 'white', textAlign: 'center', fontFamily: 'Poppins-Regular', fontSize: 16 }}>Pesan Sekarang</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </ScrollView>
   );
 };
-
 
 export default ProductDetail;
