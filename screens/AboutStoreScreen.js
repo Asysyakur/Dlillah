@@ -24,11 +24,25 @@ function AboutStoreScreen() {
   };
 
   const renderArrowIcon = (section) => {
-    const iconName = showDescription ? 'chevron-up' : 'chevron-down'; // Menggunakan ikon panah atas dan bawah
+    const isSectionOpen = getSectionState(section);
+    const iconName = isSectionOpen ? 'chevron-up' : 'chevron-down'; // Menggunakan ikon panah atas dan bawah
     return (
-      <Ionicons name={iconName} size={20} color="blue" />
+      <Ionicons name={iconName} size={20} color="#04B4A2" />
     );
   };
+
+  const getSectionState = (section) => {
+    switch (section) {
+      case 'description':
+        return showDescription;
+      case 'faq':
+        return showFAQ;
+      case 'schedule':
+        return showSchedule;
+      default:
+        return false;
+    }
+  };  
 
   const openGoogleMaps = () => {
     const address = 'Jalan Toko No. 123, Kota Anda, 12345'; // Ganti dengan alamat toko sesuai kebutuhan
@@ -159,7 +173,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   footerButton: {
-    backgroundColor: 'blue',
+    backgroundColor: '#04B4A2',
     padding: 15,
     borderRadius: 10,
     marginTop: 20,
