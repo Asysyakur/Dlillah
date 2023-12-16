@@ -13,7 +13,6 @@ import Icon from "react-native-vector-icons/Ionicons";
 import HeaderPage from "../components/HeaderPage";
 
 function RiwayatPesan({ navigation }) {
-
   const [kategori, setKategori] = useState([
     {
       keterangan: "Dalam Proses",
@@ -32,13 +31,13 @@ function RiwayatPesan({ navigation }) {
       name: "Pure Centella Acne Calming Toner",
       price: "Rp.116.000",
       date: "1 Nov 2023",
-      image: "https://i.ibb.co/8x4Mk6n/pure.png",
+      image: "https://i.ibb.co/z8M19Z0/toner.png",
     },
     {
       name: "Skintific Ceramide",
       price: "Rp.115.000",
       date: "14 Nov 2023",
-      image: "https://i.ibb.co/12sC6fK/cera.png",
+      image: "https://i.ibb.co/MVgsZsp/gambar-produk.png",
     },
   ]);
 
@@ -70,7 +69,7 @@ function RiwayatPesan({ navigation }) {
                   color:
                     seleksiKategori.keterangan == item.keterangan
                       ? "#FFFFFF"
-                      : "#3DB4A8",
+                      : "#3DB4A8", fontFamily: "Poppins",
                 }}
               >
                 {item.keterangan}
@@ -98,13 +97,14 @@ function RiwayatPesan({ navigation }) {
               }}
             >
               <Image
-                source={{ url: item.image }}
+                source={{ uri: item.image }}
                 style={{ width: 50, height: 50, justifyContent: "left" }}
                 resizeMode={"cover"}
               />
               <Text
                 style={{
                   color: "#212121",
+                  fontFamily: "Poppins",
                   fontSize: 14,
                   fontWeight: "bold",
                 }}
@@ -114,6 +114,7 @@ function RiwayatPesan({ navigation }) {
               <Text
                 style={{
                   color: "#212121",
+                  fontFamily: "Poppins",
                   fontSize: 14,
                   fontWeight: "normal",
                 }}

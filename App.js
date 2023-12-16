@@ -38,6 +38,7 @@ function RiwayatStack() {
       <Stack.Screen name="Status Pembayaran" component={StatusPembayaranStack} />
       <Stack.Screen name="Tentang Toko" component={AboutStoreScreen} />
       <Stack.Screen name="Edit Profile" component={EditProfileScreen} />
+      <Stack.Screen name="OtherPage" component={EditProfileScreen} />
     </Stack.Navigator>
   );
 }
