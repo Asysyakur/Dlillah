@@ -31,7 +31,7 @@ const Carousel = () => {
 const styles = StyleSheet.create({
   carouselContainer: {
     height: 160,
-    width: '90%',
+    width: '85%',
     alignSelf: 'center',
     borderRadius: 20,
     overflow: 'hidden',
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     width: 12,
     height: 12,
     borderRadius: 6,
-    backgroundColor: 'gray', // Warna dot yang aktif
+    backgroundColor: 'white', // Warna dot yang aktif
     marginHorizontal: 5,
   },
 });
