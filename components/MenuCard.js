@@ -1,18 +1,14 @@
-import React, { useState, useEffect } from "react";
-import {
-  FlatList,
-  View,
-  Text,
-  Image,
-  TouchableOpacity,
-  TextInput,
-} from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import { MenuList, colors } from "../Constant";
+// MenuCard.js
+
+import React, { useState, useEffect } from 'react';
+import { FlatList, View, Text, Image, TouchableOpacity, TextInput } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { MenuList, colors } from '../Constant';
+import Header from './Header';
 
 const MenuCard = () => {
   const navigation = useNavigation();
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState('');
   const [filteredMenu, setFilteredMenu] = useState(MenuList);
 
   useEffect(() => {
@@ -25,42 +21,30 @@ const MenuCard = () => {
 
   return (
     <View>
-      {/* Search Bar */}
-      <TextInput
-        style={{
-          height: 40,
-          borderColor: "gray",
-          borderWidth: 1,
-          borderRadius: 8,
-          margin: 10,
-          paddingLeft: 10,
-          fontFamily: "Poppins",
-        }}
-        placeholder="Search..."
-        onChangeText={(text) => setSearchQuery(text)}
-        value={searchQuery}
-      />
+      {/* Use the Header component and pass setSearchQuery function */}
+      <Header setSearchQuery={setSearchQuery} />
 
       <Text
         style={{
-          fontFamily: "Poppins",
-          marginLeft: 25,
+          fontFamily: 'Poppins',
+          fontSize: 20,
+          marginLeft: 15,
           marginTop: 10,
-          fontWeight: "bold",
+          fontWeight: 'bold',
         }}
       >
-        Product Of View
+        Makanan
       </Text>
       <FlatList
         data={filteredMenu}
         renderItem={({ item }) => (
           <TouchableOpacity
-            onPress={() => navigation.navigate("Product Detail", { item })}
+            onPress={() => navigation.navigate('Product Detail', { item })}
           >
             <View
               style={{
                 backgroundColor: colors.COLOR_LIGHT,
-                shadowColor: "#000",
+                shadowColor: '#000',
                 shadowOffset: { width: 0, height: 4 },
                 shadowOpacity: 0.1,
                 shadowRadius: 7,
@@ -68,7 +52,7 @@ const MenuCard = () => {
                 marginVertical: 16,
                 paddingHorizontal: 8,
                 paddingVertical: 20,
-                position: "relative",
+                position: 'relative',
               }}
             >
               <Image
@@ -79,18 +63,18 @@ const MenuCard = () => {
                   width: 130,
                   height: 140,
                   margin: 10,
-                  resizeMode: "cover",
+                  resizeMode: 'cover',
                 }}
               />
-              <Text style={{ paddingLeft: 10, fontFamily: "Poppins" }}>
+              <Text style={{ paddingLeft: 10, fontFamily: 'Poppins' }}>
                 {item.name}
               </Text>
               {/* Adjusted the text style for price */}
               <Text
                 style={{
                   paddingLeft: 10,
-                  color: "#04B4A2",
-                  fontFamily: "Poppins",
+                  color: '#04B4A2',
+                  fontFamily: 'Poppins',
                 }}
               >
                 {item.price}
@@ -98,13 +82,13 @@ const MenuCard = () => {
               {/* Add the small shopping cart button */}
               <TouchableOpacity
                 onPress={() => {
-                  navigation.navigate("Keranjang");
+                  navigation.navigate('Keranjang');
                 }}
                 style={{
-                  position: "absolute",
+                  position: 'absolute',
                   bottom: 5,
                   right: 8,
-                  backgroundColor: "#04B4A2", // Changed the button color
+                  backgroundColor: '#04B4A2', // Changed the button color
                   borderRadius: 100,
                   padding: 5,
                 }}
@@ -116,7 +100,7 @@ const MenuCard = () => {
                   fill="white"
                   class="w-6 h-6"
                   style={{
-                    width : 18,
+                    width: 18,
                   }}
                 >
                   <path d="M2.25 2.25a.75.75 0 000 1.5h1.386c.17 0 .318.114.362.278l2.558 9.592a3.752 3.752 0 00-2.806 3.63c0 .414.336.75.75.75h15.75a.75.75 0 000-1.5H5.378A2.25 2.25 0 017.5 15h11.218a.75.75 0 00.674-.421 60.358 60.358 0 002.96-7.228.75.75 0 00-.525-.965A60.864 60.864 0 005.68 4.509l-.232-.867A1.875 1.875 0 003.636 2.25H2.25zM3.75 20.25a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zM16.5 20.25a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0z" />
@@ -127,7 +111,7 @@ const MenuCard = () => {
         )}
         numColumns={2}
         columnWrapperStyle={{
-          justifyContent: "space-between",
+          justifyContent: 'space-between',
           paddingHorizontal: 10,
         }}
         showsVerticalScrollIndicator={false}

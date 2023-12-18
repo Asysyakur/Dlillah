@@ -9,7 +9,7 @@ const Homescreen = () => {
   
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
-      <Header/>
+      
       <MenuCard/>
     </ScrollView>
   )
