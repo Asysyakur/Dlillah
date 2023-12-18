@@ -369,20 +369,20 @@ export const MenuList = [
 export const KeranjangList = [
     {
         id: "01",
-        name: "Bole Marmer",
+        name: "Bolu Marmer",
         price: "Rp.29.600",
-        image: require('./assets/senka.jpg'),
+        image: require('./assets/Marmer.jpg'),
     },
     {
         id: "02",
-        name: "Bika Ambon Panda",
+        name: "Bika Ambon Pandan",
         price: "Rp.16.700",
-        image: require('./assets/Bon.jpg'),
+        image: require('./assets/ijo.jpg'),
     },
     {
         id: "03",
-        name: "Delisaos Hot Lava",
+        name: "Brownies",
         price: "Rp.15.800",
-        image: require('./assets/Saos.jpg'),
+        image: require('./assets/Brownies.jpg'),
     },
 ];
