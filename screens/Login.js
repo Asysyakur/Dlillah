@@ -20,6 +20,7 @@ const Login = () => {
           source={require('../assets/Logo Dlillah.png')}
           style={styles.logo}
         />
+        <Text style={styles.title}>Login</Text>
         <TextInput
           style={[styles.input, { borderRadius: 10 }]}
           placeholder="Email"
@@ -56,8 +57,13 @@ const styles = StyleSheet.create({
   logo: {
     width: 250,
     height: 100,
-    marginBottom: 10,
     resizeMode: 'contain', // Menggunakan 'contain' agar gambar tetap proporsional di dalam kotak
+  },
+  title: {
+    fontSize: 24,
+    fontFamily: 'Poppins',
+    fontWeight: 'bold',
+    marginBottom: 20,
   },
   input: {
     width: '100%',
