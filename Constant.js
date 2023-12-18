@@ -369,13 +369,13 @@ export const MenuList = [
 export const KeranjangList = [
     {
         id: "01",
-        name: "Senka Facial Foam",
+        name: "Bole Marmer",
         price: "Rp.29.600",
         image: require('./assets/senka.jpg'),
     },
     {
         id: "02",
-        name: "bonCabe Lv. 50",
+        name: "Bika Ambon Panda",
         price: "Rp.16.700",
         image: require('./assets/Bon.jpg'),
     },
@@ -384,17 +384,5 @@ export const KeranjangList = [
         name: "Delisaos Hot Lava",
         price: "Rp.15.800",
         image: require('./assets/Saos.jpg'),
-    },
-    {
-        id: "04",
-        name: "Frisian Flag Coklat",
-        price: "Rp.20.500",
-        image: require('./assets/FF.jpg'),
-    },
-    {
-        id: "05",
-        name: "Sari Roti Cokelat",
-        price: "Rp.6.000",
-        image: require('./assets/Sr2.jpg'),
     },
 ];
