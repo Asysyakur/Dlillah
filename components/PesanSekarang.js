@@ -1,8 +1,8 @@
 // PesanSekarang.js
 import React, { useState } from 'react';
 import { View, Text, Image, TextInput, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
-// import DatePicker from 'react-datepicker';
-// import 'react-datepicker/dist/react-datepicker.css';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const PesanSekarang = ({ route }) => {
   const { item, quantity } = route.params;
