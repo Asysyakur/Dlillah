@@ -28,16 +28,16 @@ function RiwayatPesan({ navigation }) {
 
   const [dataBarang, setDataBarang] = useState([
     {
-      name: "Pure Centella Acne Calming Toner",
+      name: "Brownies Coklat",
       price: "Rp.116.000",
       date: "1 Nov 2023",
-      image: "https://i.ibb.co/z8M19Z0/toner.png",
+      image: "https://handletheheat.com/wp-content/uploads/2017/03/Chewy-Brownies-Square-1-768x768.jpg",
     },
     {
-      name: "Skintific Ceramide",
+      name: "Bika Ambon",
       price: "Rp.115.000",
       date: "14 Nov 2023",
-      image: "https://i.ibb.co/MVgsZsp/gambar-produk.png",
+      image: "https://cdn1-production-images-kly.akamaized.net/ao5_G8FIUB5V3JLFfBDfndKy6nE=/1280x720/smart/filters:quality(75):strip_icc():format(webp)/kly-media-production/medias/842440/original/083135300_1427970222-bikaambon.jpg",
     },
   ]);
 
@@ -85,7 +85,7 @@ function RiwayatPesan({ navigation }) {
       </View>
 
       <View style={{ flex: 1 }}>
-        <FlatList
+      <FlatList
           /*yg list riwayat pesanan*/
           data={dataBarang}
           showsVerticalScrollIndicator={false}
@@ -97,45 +97,45 @@ function RiwayatPesan({ navigation }) {
                 elevation: 3,
                 marginBottom: 10,
                 marginVertical: 16,
-                paddingHorizontal: 50,
-                paddingVertical: 20,
+                paddingHorizontal: 20, // Mengurangi padding agar muat dalam layout
+                paddingVertical: 5,
+                flexDirection: "row", // Mengatur layout secara horizontal
+                alignItems: "center", // Untuk mengatur vertikal alignment
               }}
             >
               <Image
+                style={{
+                  width: 50,
+                  height: 50,
+                  resizeMode: "cover",
+                  marginRight: 10, // Jarak antara gambar dan teks
+                }}
                 source={{ uri: item.image }}
-                style={{ width: 50, height: 50, justifyContent: "left" }}
-                resizeMode={"cover"}
               />
-              <Text
-                style={{
-                  color: "#212121",
-                  fontFamily: "Poppins",
-                  fontSize: 14,
-                  fontWeight: "bold",
-                }}
-              >
-                {item.name}
-              </Text>
-              <Text
-                style={{
-                  color: "#212121",
-                  fontFamily: "Poppins",
-                  fontSize: 14,
-                  fontWeight: "normal",
-                }}
-              >
-                {item.date}
-              </Text>
-              <Text
-                style={{
-                  color: "#528BF9",
-                  fontSize: 18,
-                  fontWeight: "bold",
-                  alignItems: "right",
-                }}
-              >
-                {item.price}
-              </Text>
+              <View style={{ flex: 1 }}>
+                <Text
+                  style={{ color: "#212121", fontFamily: "Poppins", fontSize: 14, fontWeight: "bold" }}
+                >
+                  {item.name}
+                </Text>
+                <Text
+                  style={{
+                    color: "#212121",
+                    fontFamily: "Poppins",
+                    fontSize: 14,
+                    fontWeight: "normal",
+                  }}
+                >
+                  {item.date}
+                </Text>
+              </View>
+              <View style={{ flex: 1, alignItems: "flex-end" }}>
+                <Text
+                  style={{ color: "#04B4A2", fontFamily: "Poppins", fontSize: 18, fontWeight: "bold" }}
+                >
+                  {item.price}
+                </Text>
+              </View>
             </TouchableOpacity>
           )}
         />
