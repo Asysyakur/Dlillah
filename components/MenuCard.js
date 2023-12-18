@@ -5,6 +5,7 @@ import { FlatList, View, Text, Image, TouchableOpacity, TextInput } from 'react-
 import { useNavigation } from '@react-navigation/native';
 import { MenuList, colors } from '../Constant';
 import Header from './Header';
+import Carousel from './Carousel';
 
 const MenuCard = () => {
   const navigation = useNavigation();
@@ -23,6 +24,8 @@ const MenuCard = () => {
     <View>
       {/* Use the Header component and pass setSearchQuery function */}
       <Header setSearchQuery={setSearchQuery} />
+
+      <Carousel />
 
       <Text
         style={{
