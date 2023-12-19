@@ -60,7 +60,7 @@ function RiwayatPesanSudahBayar({ navigation }) {
               textAlign: "center",
             }}
           >
-            Dalam Proses
+            Sedang Dibuat
           </Text>
         </TouchableOpacity>
 
@@ -79,7 +79,7 @@ function RiwayatPesanSudahBayar({ navigation }) {
               textAlign: "center",
             }}
           >
-            Sudah Bayar
+            Selesai
           </Text>
         </TouchableOpacity>
       </View>

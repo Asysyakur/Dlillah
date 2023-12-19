@@ -36,7 +36,7 @@ function StatusPembayaran({ navigation, userId }) {
 
   const fetchData = async () => {
     try {
-      const response = await fetch(`http://127.0.0.1:8000/transaksibelum/${userId}`);
+      const response = await fetch(`http://127.0.0.1:8000/pembayaranbelum/${userId}`);
       console.log("Response status:", response.status); // Log HTTP status
   
       const data = await response.json();
@@ -79,7 +79,7 @@ function StatusPembayaran({ navigation, userId }) {
             paddingVertical: 20,
           }}
         >
-          <Text style={{ color: "#000000", fontFamily: "Poppins", textAlign: "center" }}>Selesai</Text>
+          <Text style={{ color: "#000000", fontFamily: "Poppins", textAlign: "center" }}>Selesai Validasi</Text>
         </TouchableOpacity>
       </View>
 

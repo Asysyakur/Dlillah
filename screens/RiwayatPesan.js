@@ -79,7 +79,7 @@ function RiwayatPesan({ navigation }) {
               textAlign: "center",
             }}
           >
-            Sudah Bayar
+            Selesai
           </Text>
         </TouchableOpacity>
       </View>

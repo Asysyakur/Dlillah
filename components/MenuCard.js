@@ -9,6 +9,8 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
+import Header from "./Header";
+import Carousel from "./Carrousel";
 
 const MenuCard = () => {
   const navigation = useNavigation();
@@ -42,22 +44,8 @@ const MenuCard = () => {
 
   return (
     <View>
-      {/* Search Bar */}
-      <TextInput
-        style={{
-          height: 40,
-          borderColor: "gray",
-          borderWidth: 1,
-          borderRadius: 8,
-          margin: 10,
-          paddingLeft: 10,
-          fontFamily: "Poppins",
-        }}
-        placeholder="Search..."
-        onChangeText={(text) => setSearchQuery(text)}
-        value={searchQuery}
-      />
-
+      <Header setSearchQuery={setSearchQuery} />
+      <Carousel/>
       <Text
         style={{
           fontFamily: "Poppins",

@@ -19,6 +19,7 @@ import StatusPembayaranSelesai from "./screens/StatusPembayaranSelesai";
 import Login from "./screens/Login";
 import FAQList from "./components/FAQList";
 import Register from "./screens/Register";
+import HasilTransaksi from "./screens/HasilTransaksi";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -46,11 +47,9 @@ function StatusPembayaranStack({ userId }) {
       <Stack.Screen name="Status Pembayaran" options={{ headerShown: false }}>
         {(props) => <StatusPembayaran {...props} userId={userId} />}
       </Stack.Screen>
-      <Stack.Screen
-        name="Status Pembayaran Selesai"
-        component={StatusPembayaranSelesai}
-        options={{ headerShown: false }}
-      />
+      <Stack.Screen name="Status Pembayaran Selesai" options={{ headerShown: false }}>
+        {(props) => <StatusPembayaranSelesai {...props} userId={userId} />}
+        </Stack.Screen>
     </Stack.Navigator>
   );
 }
@@ -86,6 +85,9 @@ function MenuStack({ userId }) {
       <Stack.Screen name="Product Detail" component={ProductDetail} />
       <Stack.Screen name="Pesan Sekarang">
         {(props) => <PesanSekarang {...props} userId={userId} />}
+      </Stack.Screen>
+      <Stack.Screen name="Hasil Transaksi">
+        {(props) => <HasilTransaksi {...props} userId={userId} />}
       </Stack.Screen>
       <Stack.Screen name="FAQ" component={FAQList} />
     </Stack.Navigator>

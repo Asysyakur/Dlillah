@@ -5,7 +5,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import * as ImagePicker from 'expo-image-picker';
 import axios from 'axios';
 
-const PesanSekarang = ({ route, userId }) => {
+const PesanSekarang = ({ navigation, route, userId }) => {
   const { item, quantity } = route.params;
   const [recipientAddress, setRecipientAddress] = useState('');
   const [paymentProof, setPaymentProof] = useState(null); // State untuk bukti pembayaran
@@ -71,6 +71,9 @@ const handleBayar = async (imageURI) => {
 
     // Lakukan sesuatu setelah berhasil mengirim data, seperti navigasi atau tindakan lainnya
     console.log('Data transaksi berhasil dikirim:', response.data);
+    navigation.navigate('Hasil Transaksi', 
+      response.data,
+    );
   } catch (error) {
     console.error('Error saat mengirim data transaksi:', error);
   }

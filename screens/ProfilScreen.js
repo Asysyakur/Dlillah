@@ -68,10 +68,9 @@ function ProfileScreen({ navigation , userId }) {
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.cardButton}
-        onPress={() => navigation.navigate("Riwayat Transaksi")}
+        onPress={() => navigation.navigate("Status Pembayaran", { userId: userId })}
       >
-        <Text style={styles.buttonText}>Riwayat Transaksi</Text>
-
+        <Text style={styles.buttonText}>Status Pembayaran</Text>
         <svg
           style={styles.buttonImage}
           xmlns="http://www.w3.org/2000/svg"
@@ -90,9 +89,10 @@ function ProfileScreen({ navigation , userId }) {
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.cardButton}
-        onPress={() => navigation.navigate("Status Pembayaran", { userId: userId })}
+        onPress={() => navigation.navigate("Riwayat Transaksi")}
       >
-        <Text style={styles.buttonText}>Status Pembayaran</Text>
+        <Text style={styles.buttonText}>Riwayat Transaksi</Text>
+
         <svg
           style={styles.buttonImage}
           xmlns="http://www.w3.org/2000/svg"
