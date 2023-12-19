@@ -127,6 +127,7 @@ function App() {
           })}
           initialRouteName="Home"
         >
+          
           <Tab.Screen name="Keranjang" component={KeranjangStack} />
           <Tab.Screen
             name="Home"
@@ -147,7 +148,8 @@ function App() {
           }}
           initialRouteName="Login"
         >
-          <Tab.Screen name="Login">
+          <Tab.Screen name="Login" options={{ headerShown: false, tabBarStyle: { display: "none" }, // Sembunyikan tab bar di halaman Login
+            tabBarShowLabel: false }}>
             {(props) => (
               <Login
                 {...props}
@@ -156,7 +158,8 @@ function App() {
               />
             )}
           </Tab.Screen>
-          <Tab.Screen name="Register" component={Register} />
+          <Tab.Screen name="Register" component={Register} options={{ headerShown: false , tabBarStyle: { display: "none" }, // Sembunyikan tab bar di halaman Login
+            tabBarShowLabel: false}}/>
         </Tab.Navigator>
       );
     }

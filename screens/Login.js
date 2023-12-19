@@ -49,7 +49,7 @@ const Login = ({ navigation, setIsLoggedIn, setUserId  }) => {
           source={require('../assets/Logo Dlillah.png')}
           style={styles.logo}
         />
-        <Text style={styles.title}>Login</Text>
+        <Text style={styles.title}>Masuk</Text>
         <TextInput
           style={[styles.input, { borderRadius: 10 }]}
           placeholder="Email"
@@ -62,7 +62,7 @@ const Login = ({ navigation, setIsLoggedIn, setUserId  }) => {
           onChangeText={(text) => setPassword(text)}
         />
         <TouchableOpacity style={styles.button} onPress={handleLogin}>
-          <Text style={styles.buttonText}>Login</Text>
+          <Text style={styles.buttonText}>Masuk</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={handleRegister}>
           <Text style={styles.loginText}>Belum punya akun? Buat di sini</Text>

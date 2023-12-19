@@ -1,67 +1,89 @@
-import React from 'react';
-import { View, Image, StyleSheet } from 'react-native';
-import Swiper from 'react-native-swiper/src';
+import React, { useRef, useEffect, useState } from "react";
+import { View, Image, Text, ScrollView, Dimensions, StyleSheet } from "react-native";
+
+const { width } = Dimensions.get("window");
+const height = width * 0.6; // 60%
 
 const Carousel = () => {
-  const carouselItems = [
-    { id: 0, image: require('../assets/bikaambon.jpg') },
-    { id: 1, image: require('../assets/Chocopie.jpg') },
-    { id: 2, image: require('../assets/Chitato.jpg') },
-    { id: 3, image: require('../assets/C1.jpg') },
+  const [active, setActive] = useState(0);
+
+  const images = [
+    { id: 0, image: require("../assets/bikaambon.jpg") },
+    { id: 1, image: require("../assets/Brownies.jpg") },
+    { id: 2, image: require("../assets/Marmer.jpg") },
+    { id: 3, image: require("../assets/Original.jpg") },
   ];
+
+  const scrollViewRef = useRef(null);
+
+  useEffect(() => {
+    const scrollInterval = setInterval(() => {
+      if (scrollViewRef.current) {
+        const newOffset = scrollViewRef.current.contentOffset.x + width;
+        scrollViewRef.current.scrollTo({ x: newOffset, animated: true });
+        setActive((prev) => (prev + 1) % images.length);
+      }
+    }, 3000); // Ubah interval sesuai kebutuhan
+
+    return () => clearInterval(scrollInterval);
+  }, []);
 
   return (
     <View style={styles.carouselContainer}>
-      <Swiper
-        style={styles.wrapper}
-        showsButtons={false}
-        dotStyle={styles.dotStyle}
-        activeDotStyle={styles.activeDotStyle}
+      <ScrollView
+        ref={scrollViewRef}
+        pagingEnabled
+        horizontal
+        style={styles.scrollView}
+        showsHorizontalScrollIndicator={false}
+        onMomentumScrollEnd={(event) => {
+          // Handle scroll end if needed
+          const currentIndex = Math.round(
+            event.nativeEvent.contentOffset.x / event.nativeEvent.layoutMeasurement.width
+          );
+          setActive(currentIndex);
+        }}
       >
-        {carouselItems.map((item) => (
-          <View key={item.id} style={styles.slide}>
-            <Image source={item.image} style={styles.image} />
+        {images.map((image, index) => (
+          <View key={index} style={styles.imageContainer}>
+            <Image source={image.image} style={styles.image} />
           </View>
         ))}
-      </Swiper>
+      </ScrollView>
+      <View style={{ flexDirection: 'row', position: 'absolute', bottom: 0, alignSelf: 'center' }}>
+        {images.map((_, k) => (
+          <Text key={k} style={k === active ? { color: 'black' } : { color: '#888' }}> ⬤ </Text>
+        ))}
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   carouselContainer: {
-    height: 160,
-    width: '85%',
-    alignSelf: 'center',
-    borderRadius: 20,
-    overflow: 'hidden',
-    marginTop: 20,
+    width,
+    height,
+    alignItems: "center",
+    justifyContent: "center",
   },
-  wrapper: {},
-  slide: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+  scrollView: {
+    width,
+    height,
+  },
+  imageContainer: {
+    width,
+    height,
+    paddingHorizontal: 25,
+    paddingVertical: 25,
+    borderRadius: 50,
+    overflow: "hidden",
   },
   image: {
-    width: '100%',
-    height: '100%',
-    resizeMode: 'cover',
-    borderRadius: 16,
-  },
-  dotStyle: {
-    width: 8,
-    height: 8,
-    borderRadius: 4,
-    backgroundColor: 'lightgray', // Warna dot yang tidak aktif
-    marginHorizontal: 5,
-  },
-  activeDotStyle: {
-    width: 12,
-    height: 12,
-    borderRadius: 6,
-    backgroundColor: 'white', // Warna dot yang aktif
-    marginHorizontal: 5,
+    flex: 1,
+    width: undefined,
+    height: undefined,
+    resizeMode: "cover",
+    borderRadius: 10,
   },
 });
 

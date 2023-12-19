@@ -70,7 +70,7 @@ function RiwayatPesanSudahBayar({ navigation, userId }) {
               textAlign: "center",
             }}
           >
-            Sedang Dibuat
+            Dalam Proses
           </Text>
         </TouchableOpacity>
 

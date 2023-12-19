@@ -6,6 +6,13 @@ import axios from "axios";
 
 function ProfileScreen({ navigation , userId }) {
   const [userProfile, setUserProfile] = useState(null);
+
+  const handleLogout = () => {
+    // Hapus data pengguna dari penyimpanan lokal/state jika perlu
+
+    // Navigasi ke halaman login setelah logout berhasil
+    navigation.replace("Login");
+  };
   
   console.log(userId);
   useEffect(() => {
