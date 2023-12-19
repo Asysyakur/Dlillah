@@ -93,6 +93,7 @@ function StatusPembayaran({ navigation, userId }) {
             const product = findProductById(item.produk_id);
             return (
             <TouchableOpacity
+            onPress={() => navigation.navigate("Hasil Transaksi", { data: item })}
               style={{
                 backgroundColor: "#FFFFFF",
                 elevation: 3,

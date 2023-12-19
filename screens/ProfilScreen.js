@@ -132,7 +132,6 @@ function ProfileScreen({ navigation , userId }) {
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.logoutButton}
-        onPress={() => navigation.navigate("Edit Profil")}
       >
         <Text style={styles.logoutText}>Logout</Text>
       </TouchableOpacity>

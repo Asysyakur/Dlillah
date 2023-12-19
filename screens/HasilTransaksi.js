@@ -26,8 +26,6 @@ const HasilTransaksi = ({ route, navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Pembelian Berhasil</Text>
-      <Text style={styles.subtitle}>Tunggu Pembayaranmu divalidasi admin!</Text>
       <Text style={styles.title}>Transaksi Detail</Text>
       <Text style={styles.subtitle}>ID Transaksi: {data.id}</Text>
 

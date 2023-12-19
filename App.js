@@ -24,19 +24,15 @@ import HasilTransaksi from "./screens/HasilTransaksi";
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
-function RiwayatTransaksiStack() {
+function RiwayatTransaksiStack({ userId }) {
   return (
     <Stack.Navigator>
-      <Stack.Screen
-        name="Riwayat Pesan"
-        component={RiwayatPesan}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="Riwayat Pesan Sudah Bayar"
-        component={RiwayatPesanSudahBayar}
-        options={{ headerShown: false }}
-      />
+      <Stack.Screen name="Riwayat Pesan" options={{ headerShown: false }}>
+        {(props) => <RiwayatPesan {...props} userId={userId} />}
+      </Stack.Screen>
+      <Stack.Screen name="Riwayat Pesan Sudah Bayar" options={{ headerShown: false }}>
+        {(props) => <RiwayatPesanSudahBayar {...props} userId={userId} />}
+      </Stack.Screen>
     </Stack.Navigator>
   );
 }
@@ -60,12 +56,14 @@ function RiwayatStack({ userId }) {
       <Stack.Screen name="Profil">
         {(props) => <ProfilScreen {...props} userId={userId} />}
       </Stack.Screen>
-      <Stack.Screen
-        name="Riwayat Transaksi"
-        component={RiwayatTransaksiStack}
-      />
+      <Stack.Screen name="Riwayat Transaksi">
+        {(props) => <RiwayatTransaksiStack {...props} userId={userId} />}
+      </Stack.Screen>
       <Stack.Screen name="Status Pembayaran">
         {(props) => <StatusPembayaranStack {...props} userId={userId} />}
+      </Stack.Screen>
+      <Stack.Screen name="Hasil Transaksi">
+        {(props) => <HasilTransaksi {...props} userId={userId} />}
       </Stack.Screen>
       <Stack.Screen name="Tentang Toko" component={AboutStoreScreen} />
       <Stack.Screen name="Edit Profile" component={EditProfileScreen} />
