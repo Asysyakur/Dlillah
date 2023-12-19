@@ -5,7 +5,7 @@ import { FlatList, View, Text, Image, TouchableOpacity, TextInput } from 'react-
 import { useNavigation } from '@react-navigation/native';
 import { MenuList, colors } from '../Constant';
 import Header from './Header';
-import Carousel from './Carousel';
+import Carousel from './Carouselcopy';
 
 const MenuCard = () => {
   const navigation = useNavigation();
