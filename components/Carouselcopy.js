@@ -14,19 +14,7 @@ const Carouselcopy = () => {
     { id: 3, image: require("../assets/C1.jpg") },
   ];
 
-  const scrollViewRef = useRef(null);
-
-  useEffect(() => {
-    const scrollInterval = setInterval(() => {
-      if (scrollViewRef.current) {
-        const newOffset = scrollViewRef.current.contentOffset.x + width;
-        scrollViewRef.current.scrollTo({ x: newOffset, animated: true });
-        setActive((prev) => (prev + 1) % images.length);
-      }
-    }, 3000); // Ubah interval sesuai kebutuhan
-
-    return () => clearInterval(scrollInterval);
-  }, []);
+  const scrollViewRef = useRef(null);Zz
 
   return (
     <View style={styles.carouselContainer}>
