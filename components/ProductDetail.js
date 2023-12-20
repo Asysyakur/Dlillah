@@ -1,7 +1,8 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
 
-const ProductDetail = ({ route, navigation }) => {
+const ProductDetail = ({ route, navigation, userId }) => {
   const { item } = route.params;
   const [quantity, setQuantity] = useState(1);
   const [product, setProduct] = useState(null);
@@ -29,7 +30,32 @@ const ProductDetail = ({ route, navigation }) => {
       setQuantity(quantity - 1);
     }
   };
-
+  const handlekeran = async (itemid) => {
+    try {
+      // Mendapatkan CSRF token
+  
+      // Melakukan POST request ke endpoint registrasi dengan CSRF token
+      const response = await axios.post(
+        `http://127.0.0.1:8000/keranjang`,
+        {
+          produk_id: itemid,
+          user_id: userId,
+          jumlah: quantity,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+  
+      console.log('keranjang berhasil:', response.data);
+      // Lakukan navigasi atau logika setelah registrasi berhasil
+    } catch (error) {
+      console.error('keranjang gagal:', error);
+      // Tambahkan logika penanganan kesalahan
+    }
+  };
   const handleAddToCart = () => {
     console.log(`Added ${quantity} ${product?.name} to the cart`);
   };
@@ -86,7 +112,7 @@ const ProductDetail = ({ route, navigation }) => {
 
         <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
           <TouchableOpacity
-            onPress={() => navigation.navigate("Keranjang")} 
+            onPress={() => handlekeran(item.id)}
             style={{
               flex: 1,
               backgroundColor: 'white',

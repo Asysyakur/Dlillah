@@ -20,6 +20,7 @@ import Login from "./screens/Login";
 import FAQList from "./components/FAQList";
 import Register from "./screens/Register";
 import HasilTransaksi from "./screens/HasilTransaksi";
+import PesanKeranjang from "./components/PesanKeranjang";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -75,12 +76,12 @@ function RiwayatStack({ userId }) {
 function MenuStack({ userId }) {
   return (
     <Stack.Navigator>
-      <Stack.Screen
-        name="Menu"
-        component={Homescreen}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen name="Product Detail" component={ProductDetail} />
+      <Stack.Screen name="Menu" options={{ headerShown: false }}>
+        {(props) => <Homescreen {...props} userId={userId} />}
+      </Stack.Screen>
+      <Stack.Screen name="Product Detail">
+        {(props) => <ProductDetail {...props} userId={userId} />}
+      </Stack.Screen>
       <Stack.Screen name="Pesan Sekarang">
         {(props) => <PesanSekarang {...props} userId={userId} />}
       </Stack.Screen>
@@ -92,10 +93,15 @@ function MenuStack({ userId }) {
   );
 }
 
-function KeranjangStack() {
+function KeranjangStack({userId}) {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Keranjang" component={KeranjangScreen} />
+      <Stack.Screen name="Keranjang">
+        {(props) => <KeranjangScreen {...props} userId={userId} />}
+      </Stack.Screen>
+      <Stack.Screen name="Pesan Keranjang">
+        {(props) => <PesanKeranjang {...props} userId={userId} />}
+      </Stack.Screen>
     </Stack.Navigator>
   );
 }
@@ -127,11 +133,14 @@ function App() {
           })}
           initialRouteName="Home"
         >
+<Tab.Screen
+  name="Home"
+  component={() => <MenuStack userId={userId} />}
+/>
           
-          <Tab.Screen name="Keranjang" component={KeranjangStack} />
           <Tab.Screen
-            name="Home"
-            component={() => <MenuStack userId={userId} />}
+            name="Keranjang"
+            component={() => <KeranjangStack userId={userId} />}
           />
 
           <Tab.Screen

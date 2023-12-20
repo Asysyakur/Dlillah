@@ -4,11 +4,11 @@ import Header from '../components/Header'
 //import SearchBar from '../components/SearchBar'
 import MenuCard from '../components/MenuCard'
 
-const Homescreen = () => {
+const Homescreen = ({userId}) => {
   
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
-      <MenuCard/>
+      <MenuCard userId={userId}/>
     </ScrollView>
   )
 }

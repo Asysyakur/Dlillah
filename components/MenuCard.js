@@ -12,7 +12,7 @@ import axios from "axios";
 import Header from "./Header";
 import Carousel from "./Carrousel";
 
-const MenuCard = () => {
+const MenuCard = ({userId}) => {
   const navigation = useNavigation();
   const [searchQuery, setSearchQuery] = useState("");
   const [MenuList, setMenuList] = useState([]);
@@ -41,6 +41,33 @@ const MenuCard = () => {
     );
     setFilteredMenu(filteredItems);
   }, [searchQuery]);
+
+  const handlekeran = async (itemid) => {
+    try {
+      // Mendapatkan CSRF token
+  
+      // Melakukan POST request ke endpoint registrasi dengan CSRF token
+      const response = await axios.post(
+        `http://127.0.0.1:8000/keranjang`,
+        {
+          produk_id: itemid,
+          user_id: userId,
+          jumlah:1,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+  
+      console.log('keranjang berhasil:', response.data);
+      // Lakukan navigasi atau logika setelah registrasi berhasil
+    } catch (error) {
+      console.error('keranjang gagal:', error);
+      // Tambahkan logika penanganan kesalahan
+    }
+  };
 
   return (
     <View>
@@ -102,9 +129,7 @@ const MenuCard = () => {
               </Text>
               {/* Add the small shopping cart button */}
               <TouchableOpacity
-                onPress={() => {
-                  navigation.navigate("Keranjang");
-                }}
+                onPress={() => handlekeran(item.id)}
                 style={{
                   position: "absolute",
                   bottom: 5,

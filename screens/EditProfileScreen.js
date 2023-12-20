@@ -18,7 +18,6 @@ function EditProfileScreen({ navigation, route }) {
   const [phoneNumber, setPhoneNumber] = useState(""); // State untuk nomor telepon
   const [address, setAddress] = useState(""); // State untuk alamat
   const [profileImage, setProfileImage] = useState(null);
-  const [uploadedImageUrl, setUploadedImageUrl] = useState(null);
 
   const { userId } = route.params;
   console.log(userId);
@@ -34,6 +33,7 @@ function EditProfileScreen({ navigation, route }) {
         setEmail(userData.email);
         setPhoneNumber(userData.nomor);
         setAddress(userData.alamat);
+        setProfileImage(userData.gambar);
         console.log(response.data);
       } catch (error) {
         console.error("Error fetching user profile:", error);
@@ -78,8 +78,9 @@ function EditProfileScreen({ navigation, route }) {
         const gambar = result.assets ? result.assets[0].uri : result.uri;
         console.log(gambar);
         setProfileImage(gambar); // Perbarui state paymentProof dengan URI gambar terpilih
+        console.log(profileImage);
       }
-      console.log(profileImage);
+     
     } catch (error) {
       console.log(error);
     }
