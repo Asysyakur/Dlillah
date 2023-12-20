@@ -36,33 +36,32 @@ const PesanSekarang = ({ navigation, route, userId }) => {
   };
 
   const selectImage = async () => {
-  try {
-    let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images,
-      allowsEditing: true,
-      aspect: [4, 3],
-      quality: 1,
-    });
-    if (!result.cancelled) {
-      handleSubmit(result.uri); // Panggil fungsi handleSubmit dengan URI gambar
+    try {
+      let result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        allowsEditing: true,
+        aspect: [4, 3],
+        quality: 1,
+      });
+      if (!result.cancelled) {
+        const gambar = result.assets ? result.assets[0].uri : result.uri;
+        console.log(gambar);
+        setPaymentProof(gambar); // Perbarui state paymentProof dengan URI gambar terpilih
+      }
+      console.log(paymentProof);
+    } catch (error) {
+      console.log(error);
     }
-  } catch (error) {
-    console.log(error);
-  }
-};
-const handleBayar = async (imageURI) => {
+  };
+const handleBayar = async () => {
   try {
-    // Upload image terlebih dahulu ke server atau penyimpanan file (misalnya AWS S3)
-    // Setelah berhasil diunggah, dapatkan URL gambar dari server
-    const uploadedImageUrl = 'URL_GAMBAR_YANG_DIUNGGGAH'; // Ganti dengan URL gambar yang diunggah
 
-    // Kirim data transaksi ke backend
     const response = await axios.post(`http://127.0.0.1:8000/transaksi/${userId}`, {
       produk_id: item.id,
       total_pesanan: quantity,
       total_harga: totalPayment,
       catatan: notes,
-      bukti_pembayaran: uploadedImageUrl,
+      bukti_pembayaran: paymentProof,
       tanggal_pemesanan: orderDate.toISOString().split("T")[0],
       alamat_penerima: recipientAddress,
       user_id: userId,

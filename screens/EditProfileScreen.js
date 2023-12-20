@@ -52,7 +52,7 @@ function EditProfileScreen({ navigation, route }) {
           email,
           nomor: phoneNumber,
           alamat: address,
-          gambar: uploadedImageUrl, // Tambahkan URL gambar ke data pengguna
+          gambar: profileImage, // Tambahkan URL gambar ke data pengguna
         }
       );
 
@@ -75,36 +75,11 @@ function EditProfileScreen({ navigation, route }) {
         quality: 1,
       });
       if (!result.cancelled) {
-        setProfileImage(result.uri);
-        const formData = new FormData();
-        formData.append("image", {
-          uri: result.uri,
-          name: `photo_${Date.now()}`,
-          type: "image/jpeg", // Ubah tipe gambar sesuai kebutuhan
-        });
-
-        try {
-          const response = await axios.post(
-            "https://api.imgbb.com/1/upload?key=8e6f029993635453c67071f5f258cd87",
-            formData,
-            {
-              headers: {
-                "Content-Type": "multipart/form-data",
-              },
-            }
-          );
-
-          if (response.status === 200) {
-            const imageUrl = response.data.data.url;
-            setUploadedImageUrl(imageUrl);
-            console.log("Image uploaded successfully:", imageUrl);
-          } else {
-            console.error("Failed to upload image");
-          }
-        } catch (error) {
-          console.error("Error uploading image:", error);
-        }
+        const gambar = result.assets ? result.assets[0].uri : result.uri;
+        console.log(gambar);
+        setProfileImage(gambar); // Perbarui state paymentProof dengan URI gambar terpilih
       }
+      console.log(profileImage);
     } catch (error) {
       console.log(error);
     }
