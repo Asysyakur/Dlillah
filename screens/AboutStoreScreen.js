@@ -45,7 +45,7 @@ function AboutStoreScreen() {
   };  
 
   const openGoogleMaps = () => {
-    const address = 'Jalan Toko No. 123, Kota Anda, 12345'; // Ganti dengan alamat toko sesuai kebutuhan
+    const address = 'Jl. Cipamokolan No.222'; // Ganti dengan alamat toko sesuai kebutuhan
     const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
     Linking.openURL(url);
   };

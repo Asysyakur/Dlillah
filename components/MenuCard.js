@@ -81,7 +81,7 @@ const MenuCard = ({userId}) => {
           fontWeight: "bold",
         }}
       >
-        Makanan
+        Produk
       </Text>
       <FlatList
         data={filteredMenu}

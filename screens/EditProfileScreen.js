@@ -186,6 +186,12 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginBottom: 5,
   },
+  profileImage: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    marginRight: 20,
+  },
   editProfileInput: {
     borderBottomWidth: 1,
     borderColor: "#CCCCCC",

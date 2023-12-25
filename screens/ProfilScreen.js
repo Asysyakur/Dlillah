@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 import HeaderPage from "../components/HeaderPage";
-import DefaultProfileImage from "../assets/ProfilImg.png";
+import DefaultProfileImage from "../assets/favicon.png";
 import axios from "axios";
 
 function ProfileScreen({ navigation , userId }) {

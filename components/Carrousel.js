@@ -80,8 +80,7 @@ const styles = StyleSheet.create({
   },
   image: {
     flex: 1,
-    width: 320,
-    height: 60,
+
     resizeMode: "cover",
     borderRadius: 10,
   },
